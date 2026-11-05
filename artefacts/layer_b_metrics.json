@@ -1,0 +1,374 @@
+{
+ "data_label": "SYNTHETIC (physics-informed)",
+ "split": {
+  "train_years": [
+   "2022",
+   "2023"
+  ],
+  "test_years": [
+   "2024"
+  ],
+  "train_rows": 804160,
+  "test_rows": 806400,
+  "train_origin_every_h": 12.0,
+  "test_origin_every_h": 6
+ },
+ "fleet": {
+  "train": {
+   "tanks": 160,
+   "seal_mix": {
+    "none": 65,
+    "minor": 50,
+    "major": 45
+   },
+   "drain_out_on": 72,
+   "incidents": 28,
+   "max_mass_imbalance_kg": 2.9103830456733704e-11
+  },
+  "test": {
+   "tanks": 80,
+   "seal_mix": {
+    "none": 32,
+    "major": 25,
+    "minor": 23
+   },
+   "drain_out_on": 38,
+   "incidents": 20,
+   "max_mass_imbalance_kg": 1.482991507373299e-11
+  }
+ },
+ "evaluation": {
+  "n_origins": 101946,
+  "n_incidents": 20,
+  "legacy_xgboost": {
+   "margin_mae_by_h": {
+    "6": 0.027494846193733005,
+    "12": 0.02964925422162255,
+    "24": 0.03394846390679358,
+    "36": 0.03841194866976632,
+    "48": 0.042451986730308165,
+    "60": 0.046568945419878265,
+    "72": 0.050503797358196996
+   },
+   "margin_mae": 0.038432748928614126,
+   "tts_mae_h": 33.80589625562158,
+   "tts_n": 235,
+   "act_precision": null,
+   "act_recall_origins": 0.0,
+   "state_counts": {
+    "SAFE": 101946
+   },
+   "incident_recall": 0.0,
+   "lead_time_h_median": null,
+   "lead_time_h_all": []
+  },
+  "gbm": {
+   "margin_mae_by_h": {
+    "6": 0.01134759911210286,
+    "12": 0.013625387781935411,
+    "24": 0.017942689453362134,
+    "36": 0.021942746021030794,
+    "48": 0.02555818421587303,
+    "60": 0.028328253188460696,
+    "72": 0.03093573419490809
+   },
+   "margin_mae": 0.02138294199538186,
+   "tts_mae_h": 33.18698784017216,
+   "tts_n": 235,
+   "act_precision": 0.6875,
+   "act_recall_origins": 0.48125,
+   "state_counts": {
+    "SAFE": 101481,
+    "WATCH": 353,
+    "ACT": 112
+   },
+   "incident_recall": 0.8,
+   "lead_time_h_median": 41.75,
+   "lead_time_h_all": [
+    11.0,
+    28.0,
+    6.5,
+    36.0,
+    65.0,
+    67.5,
+    47.5,
+    69.0,
+    52.0,
+    67.0,
+    7.0,
+    72.0,
+    18.5,
+    7.5,
+    18.0,
+    51.5
+   ]
+  },
+  "physics_rollforward": {
+   "margin_mae_by_h": {
+    "6": 0.011961440198234918,
+    "12": 0.013985834451634085,
+    "24": 0.01637598796210763,
+    "36": 0.021895441565025493,
+    "48": 0.025154164507095865,
+    "60": 0.02969761224280532,
+    "72": 0.0327736006823053
+   },
+   "margin_mae": 0.021692011658458372,
+   "tts_mae_h": 28.281030360576537,
+   "tts_n": 235,
+   "act_precision": 0.5116279069767442,
+   "act_recall_origins": 0.1375,
+   "state_counts": {
+    "SAFE": 101398,
+    "WATCH": 505,
+    "ACT": 43
+   },
+   "incident_recall": 0.4,
+   "lead_time_h_median": 45.5,
+   "lead_time_h_all": [
+    4.0,
+    48.0,
+    47.0,
+    45.0,
+    46.0,
+    31.0,
+    48.0,
+    15.5
+   ]
+  }
+ },
+ "gbm_feature_importance": {
+  "gauge_water_mm": 0.5767728686332703,
+  "recon_L": 0.3196121156215668,
+  "fuel_m3": 0.016082851216197014,
+  "horizon_h": 0.014382467605173588,
+  "est_margin_now": 0.013307425193488598,
+  "ullage_pct": 0.01325360406190157,
+  "d_fuel_24h": 0.012014429084956646,
+  "fcst_t_fuel_min_h": 0.0046496582217514515,
+  "fcst_t_fuel_h": 0.003917121794074774,
+  "t_fuel": 0.003657897002995014,
+  "rh_mean_24h": 0.002852500881999731,
+  "t_amb_swing_24h": 0.002376225544139743,
+  "d_water_mm_72h": 0.002299700630828738,
+  "precip_24h": 0.002287565730512142,
+  "precip_72h": 0.0020643973257392645,
+  "hours_since_drain": 0.001955423504114151,
+  "fcst_precip_h": 0.0019394883420318365,
+  "sensor_water_mgkg": 0.001863072975538671,
+  "d_sensor_72h": 0.0018261522054672241,
+  "d_water_mm_24h": 0.0016759408172219992,
+  "drain_out_on": 0.001209122478030622
+ },
+ "changepoints": {
+  "water": {
+   "stream": "water",
+   "train_sweep": [
+    {
+     "penalty": 40,
+     "tp": 6496,
+     "fp": 13830,
+     "fn": 1119,
+     "precision": 0.31959067204565583,
+     "recall": 0.8530531845042679,
+     "f1": 0.46497977881965574,
+     "mean_abs_delay_h": 0.9221059113300493
+    },
+    {
+     "penalty": 160,
+     "tp": 5835,
+     "fp": 7819,
+     "fn": 1780,
+     "precision": 0.4273472974952395,
+     "recall": 0.7662508207485227,
+     "f1": 0.5486858808594669,
+     "mean_abs_delay_h": 0.7657240788346187
+    },
+    {
+     "penalty": 640,
+     "tp": 5150,
+     "fp": 4207,
+     "fn": 2465,
+     "precision": 0.5503900822913327,
+     "recall": 0.6762967826657912,
+     "f1": 0.6068819231675701,
+     "mean_abs_delay_h": 0.6157281553398058
+    },
+    {
+     "penalty": 1280,
+     "tp": 4629,
+     "fp": 2944,
+     "fn": 2986,
+     "precision": 0.6112504951802457,
+     "recall": 0.6078791858174656,
+     "f1": 0.6095601790887543,
+     "mean_abs_delay_h": 0.5439619788291208
+    },
+    {
+     "penalty": 2560,
+     "tp": 4056,
+     "fp": 2044,
+     "fn": 3559,
+     "precision": 0.6649180327868852,
+     "recall": 0.5326329612606697,
+     "f1": 0.5914691943127961,
+     "mean_abs_delay_h": 0.4775641025641026
+    },
+    {
+     "penalty": 5120,
+     "tp": 3195,
+     "fp": 1433,
+     "fn": 4420,
+     "precision": 0.6903630077787382,
+     "recall": 0.4195666447800394,
+     "f1": 0.5219308992893898,
+     "mean_abs_delay_h": 0.49295774647887325
+    },
+    {
+     "penalty": 10240,
+     "tp": 2022,
+     "fp": 845,
+     "fn": 5593,
+     "precision": 0.7052668294384374,
+     "recall": 0.2655285620485883,
+     "f1": 0.38580423583285633,
+     "mean_abs_delay_h": 0.6419386745796242
+    },
+    {
+     "penalty": 20480,
+     "tp": 1126,
+     "fp": 432,
+     "fn": 6489,
+     "precision": 0.7227214377406932,
+     "recall": 0.14786605384110307,
+     "f1": 0.245503106944293,
+     "mean_abs_delay_h": 0.8206039076376554
+    }
+   ],
+   "chosen_penalty": 1280,
+   "test": {
+    "penalty": 1280,
+    "tp": 2449,
+    "fp": 1567,
+    "fn": 1429,
+    "precision": 0.6098107569721115,
+    "recall": 0.6315110881897885,
+    "f1": 0.6204712439827716,
+    "mean_abs_delay_h": 0.4916292364230298
+   },
+   "detector": "KernelCPD linear (PELT)",
+   "tolerance_h": 6
+  },
+  "recon": {
+   "stream": "recon",
+   "train_sweep": [
+    {
+     "penalty": 8,
+     "tp": 28,
+     "fp": 27,
+     "fn": 0,
+     "precision": 0.509090909090909,
+     "recall": 1.0,
+     "f1": 0.6746987951807228,
+     "mean_abs_delay_h": 1.5
+    },
+    {
+     "penalty": 32,
+     "tp": 28,
+     "fp": 1,
+     "fn": 0,
+     "precision": 0.9655172413793104,
+     "recall": 1.0,
+     "f1": 0.9824561403508771,
+     "mean_abs_delay_h": 1.8571428571428572
+    },
+    {
+     "penalty": 128,
+     "tp": 28,
+     "fp": 1,
+     "fn": 0,
+     "precision": 0.9655172413793104,
+     "recall": 1.0,
+     "f1": 0.9824561403508771,
+     "mean_abs_delay_h": 12.357142857142858
+    },
+    {
+     "penalty": 256,
+     "tp": 10,
+     "fp": 1,
+     "fn": 18,
+     "precision": 0.9090909090909091,
+     "recall": 0.35714285714285715,
+     "f1": 0.5128205128205129,
+     "mean_abs_delay_h": 20.8
+    },
+    {
+     "penalty": 512,
+     "tp": 0,
+     "fp": 0,
+     "fn": 28,
+     "precision": null,
+     "recall": 0.0,
+     "f1": 0.0,
+     "mean_abs_delay_h": null
+    },
+    {
+     "penalty": 1024,
+     "tp": 0,
+     "fp": 0,
+     "fn": 28,
+     "precision": null,
+     "recall": 0.0,
+     "f1": 0.0,
+     "mean_abs_delay_h": null
+    }
+   ],
+   "chosen_penalty": 32,
+   "test": {
+    "penalty": 32,
+    "tp": 20,
+    "fp": 2,
+    "fn": 0,
+    "precision": 0.9090909090909091,
+    "recall": 1.0,
+    "f1": 0.9523809523809523,
+    "mean_abs_delay_h": 1.45
+   },
+   "detector": "one-sided CUSUM on volume loss",
+   "tolerance_h": 24
+  }
+ },
+ "solution4": {
+  "n_tanks": 143,
+  "by_seal": {
+   "major": {
+    "tanks": 70,
+    "tanks_with_separation_off": 69,
+    "tanks_with_separation_on": 13,
+    "incidents_off": 69,
+    "incidents_on": 13,
+    "median_delay_days_when_both_separate": 49.83333333333334
+   },
+   "minor": {
+    "tanks": 73,
+    "tanks_with_separation_off": 8,
+    "tanks_with_separation_on": 0,
+    "incidents_off": 8,
+    "incidents_on": 0,
+    "median_delay_days_when_both_separate": null
+   }
+  }
+ },
+ "breathing_only": {
+  "sealed_tanks": 97,
+  "tanks_separated": 0,
+  "max_vapour_uptake_kg_per_day": 0.1319735950350579
+ },
+ "alert_config": {
+  "watch_horizon_h": 72,
+  "act_horizon_h": 48,
+  "watch_margin": 0.25,
+  "act_margin": 0.0,
+  "alert_quantile": 0.1
+ }
+}

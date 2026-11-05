@@ -1,0 +1,22 @@
+[project]
+name = "e20-water-ingress"
+version = "0.2.0"
+description = "E20 water-ingress early warning: Raman PLS depot check (real data) + tank digital twin (synthetic)"
+requires-python = ">=3.11,<3.12"
+license = {text = "MIT"}
+
+[tool.setuptools]
+packages = ["common", "layer_a", "layer_b", "sim", "validation"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+extend-exclude = ["legacy", "site", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "NPY"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

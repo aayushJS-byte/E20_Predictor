@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+node_modules/
+site/dist/
+data/raw/
+data/processed/
+data/weather/
+artefacts/layer_b_run.log
+.DS_Store
+
+# third-party downloads (fetched automatically by validation/)
+data/external/literature/
+data/external/ftir_osu/
+.vercel/
+site/dist/.vercel/

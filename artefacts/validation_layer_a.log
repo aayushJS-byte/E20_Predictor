@@ -1,0 +1,189 @@
+  Research Octane Number           R2=0.911 RMSEP=0.698 RPD=3.38 CI(R2)=[0.78 0.96] PIcov=0.97
+  Motor Octane Number              R2=0.872 RMSEP=0.746 RPD=2.92 CI(R2)=[0.28 0.92] PIcov=1.00
+[Ethanol Content (%)] nested CV ...
+[Ethanol Content (%)] permutation test ...
+[Ethanol Content (%)] model zoo ...
+[ethanol] learning curve ...
+  Ethanol Content (%)              R2=0.948 RMSEP=0.698 RPD=4.60 CI(R2)=[0.92 0.97] PIcov=0.97
+  Ethyl Tert-Butyl Ether (ETBE)    R2=0.952 RMSEP=1.09 RPD=4.63 CI(R2)=[0.91 0.97] PIcov=1.00
+  Methyl Tert-Butyl Ether (MTBE)   R2=0.961 RMSEP=0.579 RPD=5.09 CI(R2)=[0.69 0.99] PIcov=0.97
+  Density at 15°C                  R2=0.629 RMSEP=4.17 RPD=1.64 CI(R2)=[0.11 0.78] PIcov=0.92
+[Water Content] nested CV ...
+[Water Content] permutation test ...
+[Water Content] model zoo ...
+  Water Content                    R2=0.267 RMSEP=191 RPD=1.17 CI(R2)=[-0.13  0.45] PIcov=0.97
+  Oxygenates Content               R2=0.431 RMSEP=3.11 RPD=1.33 CI(R2)=[0.07 0.68] PIcov=0.94
+  Oxygen Content                   R2=0.654 RMSEP=0.309 RPD=1.72 CI(R2)=[0.35 0.83] PIcov=0.97
+  Olefins Content                  R2=0.415 RMSEP=2.6 RPD=1.31 CI(R2)=[0.09 0.63] PIcov=0.97
+  Aromatics Content                R2=0.860 RMSEP=1.48 RPD=2.68 CI(R2)=[0.77 0.93] PIcov=0.97
+  Benzene Content                  R2=0.924 RMSEP=0.0658 RPD=3.66 CI(R2)=[0.86 0.96] PIcov=1.00
+Ethanol Content (%) {
+ "nested_cv": {
+  "repeats": 10,
+  "folds": 5,
+  "rmsep_mean": 0.9186223935796297,
+  "rmsep_sd": 0.020248957872480225,
+  "rmsep_range": [
+   0.8839915329096053,
+   0.9584971956355358
+  ],
+  "r2_mean": 0.9173541610576341,
+  "pi_coverage": 0.9414634146341463,
+  "selected_pipelines": [
+   [
+    "als+snv | fingerprint 400-1800 | 5 LV",
+    18
+   ],
+   [
+    "als+snv | full 400-2300 | 5 LV",
+    11
+   ],
+   [
+    "sg-d1+snv | fingerprint 400-1800 | 5 LV",
+    4
+   ],
+   [
+    "msc | full 400-2300 | 7 LV",
+    2
+   ],
+   [
+    "sg-d1+snv | full 400-2300 | 5 LV",
+    2
+   ]
+  ]
+ },
+ "permutation": {
+  "n_permutations": 200,
+  "real_rmsep": 0.6977166730261161,
+  "null_rmsep_median": 3.222994885908924,
+  "null_rmsep_p05": 2.670143294014183,
+  "p_value": 0.004975124378109453
+ },
+ "models": {
+  "PLS (selected)": {
+   "n": 36,
+   "r2": 0.9476555303498817,
+   "rmsep": 0.6977166730261161,
+   "sep": 0.671787953122641,
+   "bias": -0.21919303522276049,
+   "rpd": 4.603930043536284
+  },
+  "Ridge": {
+   "n": 36,
+   "r2": 0.9503337008713334,
+   "rmsep": 0.6796332207578334,
+   "sep": 0.6711205749188166,
+   "bias": -0.15495056725168346,
+   "rpd": 4.608508300674892
+  },
+  "SVR (RBF)": {
+   "n": 36,
+   "r2": 0.950817568621712,
+   "rmsep": 0.6763144967911267,
+   "sep": 0.6667028406400622,
+   "bias": -0.15892023054914498,
+   "rpd": 4.639045391343757
+  },
+  "Random forest": {
+   "n": 36,
+   "r2": 0.9497425614997062,
+   "rmsep": 0.6836658300993016,
+   "sep": 0.6687578549618951,
+   "bias": -0.18051357449495095,
+   "rpd": 4.624790149856706
+  },
+  "Gradient boosting": {
+   "n": 36,
+   "r2": 0.8721009306326375,
+   "rmsep": 1.0906298790283215,
+   "sep": 1.10536266765293,
+   "bias": 0.039831325830819816,
+   "rpd": 2.7980542773660892
+  }
+ }
+}
+Water Content {
+ "nested_cv": {
+  "repeats": 10,
+  "folds": 5,
+  "rmsep_mean": 203.72320168277935,
+  "rmsep_sd": 16.41553334575447,
+  "rmsep_range": [
+   192.25150870140615,
+   249.03442121296655
+  ],
+  "r2_mean": 0.20824953776048866,
+  "pi_coverage": 0.9640243902439024,
+  "selected_pipelines": [
+   [
+    "sg-d2+snv | fingerprint 400-1800 | 1 LV",
+    26
+   ],
+   [
+    "sg-d2+snv | full 400-2300 | 1 LV",
+    16
+   ],
+   [
+    "als+snv | fingerprint 400-1800 | 2 LV",
+    2
+   ],
+   [
+    "msc | fingerprint 400-1800 | 3 LV",
+    1
+   ],
+   [
+    "sg-d1 | full 400-2300 | 4 LV",
+    1
+   ]
+  ]
+ },
+ "permutation": {
+  "n_permutations": 200,
+  "real_rmsep": 191.2492671323777,
+  "null_rmsep_median": 230.92639480051878,
+  "null_rmsep_p05": 205.48737228474542,
+  "p_value": 0.004975124378109453
+ },
+ "models": {
+  "PLS (selected)": {
+   "n": 36,
+   "r2": 0.2669752189403042,
+   "rmsep": 191.2492671323777,
+   "sep": 193.1690886632672,
+   "bias": 17.276967573489895,
+   "rpd": 1.1727894443866045
+  },
+  "Ridge": {
+   "n": 36,
+   "r2": 0.3145901036883374,
+   "rmsep": 184.93352020089355,
+   "sep": 187.3433889951745,
+   "bias": 8.820051608079769,
+   "rpd": 1.209258940927428
+  },
+  "SVR (RBF)": {
+   "n": 36,
+   "r2": 0.3811601233385361,
+   "rmsep": 175.7233995749724,
+   "sep": 176.1856037803392,
+   "bias": -26.450073206253037,
+   "rpd": 1.2858409728442328
+  },
+  "Random forest": {
+   "n": 36,
+   "r2": 0.2974264477847779,
+   "rmsep": 187.23470454502842,
+   "sep": 188.94365867458862,
+   "bias": 18.675838320784138,
+   "rpd": 1.199017049607543
+  },
+  "Gradient boosting": {
+   "n": 36,
+   "r2": 0.2248932193123293,
+   "rmsep": 196.66234765041384,
+   "sep": 199.3980466215239,
+   "bias": -4.575018289645775,
+   "rpd": 1.1361528962019702
+  }
+ }
+}
